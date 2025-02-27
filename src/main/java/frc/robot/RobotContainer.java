@@ -3,6 +3,7 @@ package frc.robot;
 import frc.robot.commands.ElevatorCommands.SetElevatorMax;
 import frc.robot.commands.ElevatorCommands.SetElevatorMin;
 import frc.robot.commands.IntakeCommands.ManualSetIntake;
+import frc.robot.commands.IntakeCommands.SetIntakeMax;
 import frc.robot.commands.ElevatorCommands.ManualSetElevator;
 import frc.robot.commands.DriveCommands.DriveWithJoysticks ;
 
@@ -36,7 +37,7 @@ public class RobotContainer {
     configureBindings();
     m_chasis.setDefaultCommand(new DriveWithJoysticks(m_chasis, Player1Controller));
     m_elevador.setDefaultCommand(new ManualSetElevator(m_elevador, Player2Controller));
-    m_intake.setDefaultCommand(new ManualSetIntake(m_intake));
+    m_intake.setDefaultCommand(new ManualSetIntake(m_intake,Player2Controller));
   }
   
   private void configureBindings() {
@@ -67,9 +68,7 @@ public class RobotContainer {
     //bindings subsistemas
 
       //intake
-
-
-      button2A.onTrue(new InstantCommand(() -> m_intake.ponerAngulo(90)));
+      button2A.onTrue(new SetIntakeMax(m_intake)); 
       button2B.onTrue(new InstantCommand(() -> m_intake.ponerAngulo(40)));
       button2X.onTrue(new InstantCommand(() -> m_intake.ponerAngulo(170)));
 

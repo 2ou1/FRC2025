@@ -58,11 +58,11 @@ public class SwerveModule extends SubsystemBase {
         double currentAngle = encoder.getAbsolutePosition().getValueAsDouble()*360; 
 
         double error= currentAngle - targetAngle;
-        System.out.println("error" + error);
-        System.out.println("PIDangulo" + steerOutput);
+        //System.out.println("error" + error);
+       // System.out.println("PIDangulo" + steerOutput);
        
-        driveMotor.set(driveOutput);
-        steerMotor.set(steerOutput);  // Adjust scale factor if needed.
+        driveMotor.set(driveOutput*0);
+        steerMotor.set(steerOutput*0);  // Adjust scale factor if needed.
     }
     
     public Rotation2d getModuleAngle() {
